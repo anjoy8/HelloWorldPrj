@@ -1,10 +1,10 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM swr.cn-south-1.myhuaweicloud.com/mcr/aspnet:3.1-alpine AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM swr.cn-south-1.myhuaweicloud.com/mcr/aspnet:3.1-alpine AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["HelloWorldPrj/HelloWorldPrj.csproj", "HelloWorldPrj/"]
 RUN dotnet restore "HelloWorldPrj/HelloWorldPrj.csproj"
